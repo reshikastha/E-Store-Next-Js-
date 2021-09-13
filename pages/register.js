@@ -7,7 +7,7 @@ const Register =()=>{
                 <title>Register Page</title>
             </Head>
 
-            <form className="mx-auto my-4" style={{maxWidth:"500px"}}>
+            <form className="mx-auto my-4" style={{maxWidth:"600px"}}>
 
             <div className="form-group">
                     <label htmlfor="exampleInputEmail1">Fullname</label>

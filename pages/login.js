@@ -21,7 +21,7 @@ const Login =()=>{
                 <button type="submit" className="btn btn-dark w-100">Submit</button>
                 <p className="my-2">If you don't have you account?  
                 <Link href="/register">
-                    <a style={{color:'crimson'}}> Register</a></Link></p>
+                    <a style={{color:'blue'}}> Register</a></Link></p>
             </form>
         </div>
        
