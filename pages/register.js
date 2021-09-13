@@ -1,33 +1,59 @@
 import Head from 'next/head'
 import Link  from 'next/link'
+import {useState, useContext, useEffect} from 'react'
+import valid from '../utils/valid'
+
+import {postData} from '../utils/fetchData'
+
+
 const Register =()=>{
+    const initialState ={
+        name:"",
+        email:"",
+        password:""
+    }
+     const [UserData, setUserData] = useState(initialState)
+
+     const { name, email, password} = UserData
+
+     const handleChange = e =>{
+         const {name, value} = e.target
+         setUserData({...UserData, [name]:value})
+     }
+     const handleSubmit = async e => {
+        e.preventDefault()
+        const errMsg = valid(name, email, password)
+       if(errMsg) console.log(errMsg)
+    
+        // const res = await postData('auth/register', UserData)
+        
+       
+      }
+    
+     
     return(
         <div>
             <Head>
                 <title>Register Page</title>
             </Head>
 
-            <form className="mx-auto my-4" style={{maxWidth:"600px"}}>
+            <form className="mx-auto my-4" style={{maxWidth:"600px"}} onSubmit={handleSubmit}>
 
             <div className="form-group">
-                    <label htmlfor="exampleInputEmail1">Fullname</label>
-                    <input type="text" className="form-control" id="fullname" aria-describedby="fullnameHelp" placeholder="Enter Fullname"/>
+                    <label htmlfor="name">Fullname</label>
+                    <input type="text" className="form-control" id="name"  name="name" 
+                    aria-describedby="fullnameHelp" placeholder="Enter Fullname" value={name} onChange={handleChange}/>
+                </div>
+               
+                <div className="form-group">
+                    <label htmlfor="email">Email address</label>
+                    <input type="email" className="form-control" id="email" name="email" 
+                    aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={handleChange}/>
                 </div>
                 <div className="form-group">
-                    <label htmlfor="exampleInputEmail1">Address</label>
-                    <input type="text" className="form-control" id="address" aria-describedby="addressHelp" placeholder="Enter Address"/>
-                </div>
-                <div className="form-group">
-                    <label htmlfor="exampleInputEmail1">Contact</label>
-                    <input type="text" className="form-control" id="contact" aria-describedby="contactHelp" placeholder="Enter Contact"/>
-                </div>
-                <div className="form-group">
-                    <label htmlfor="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                </div>
-                <div className="form-group">
-                    <label htmlfor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                    <label htmlfor="password">Password</label>
+                    <input type="password" className="form-control" id="password" name="password" 
+                    placeholder="Enter password" value={password} onChange={handleChange}/>
                 </div>
                 
                 <button type="submit" className="btn btn-dark w-100">Submit</button>
