@@ -82,7 +82,7 @@ const Home = (props) => {
         </div>
       } */}
 
-      <div className="products">
+      <div className="products" style={{display:'flex',flexDirection:"row",  margin:"10px 0"}}>
         {
           products.length === 0 
           ? <h2>No Products</h2>
