@@ -1,4 +1,4 @@
-const valid = (name, email, password) => {
+const valid = (name, email, password, cf_password) => {
     if(!name || !email || !password)
     return 'Please add all fields.'
 
@@ -8,6 +8,7 @@ const valid = (name, email, password) => {
     if(password.length < 6)
     return 'Password must be at least 6 characters.'
 
+   
 }
 
 

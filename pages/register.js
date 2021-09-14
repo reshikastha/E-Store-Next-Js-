@@ -16,6 +16,8 @@ const Register =()=>{
 
      const { name, email, password} = UserData
 
+    
+
      const handleChange = e =>{
          const {name, value} = e.target
          setUserData({...UserData, [name]:value})
@@ -25,11 +27,11 @@ const Register =()=>{
         const errMsg = valid(name, email, password)
        if(errMsg) console.log(errMsg)
     
-        // const res = await postData('auth/register', UserData)
-        
+        const res = await postData('auth/register', UserData)
+        console.log(res)
        
       }
-    
+  
      
     return(
         <div>
@@ -40,7 +42,7 @@ const Register =()=>{
             <form className="mx-auto my-4" style={{maxWidth:"600px"}} onSubmit={handleSubmit}>
 
             <div className="form-group">
-                    <label htmlfor="name">Fullname</label>
+                    <label for="name">Fullname</label>
                     <input type="text" className="form-control" id="name"  name="name" 
                     aria-describedby="fullnameHelp" placeholder="Enter Fullname" value={name} onChange={handleChange}/>
                 </div>
@@ -56,9 +58,9 @@ const Register =()=>{
                     placeholder="Enter password" value={password} onChange={handleChange}/>
                 </div>
                 
-                <button type="submit" className="btn btn-dark w-100">Submit</button>
+                <button type="submit" className="btn btn-dark w-100" style={{marginTop:"10px", marginBottom:"20px"}}>Submit</button>
 
-                <Link href="login">
+                <Link href="signin">
                 <button type="submit" className="btn btn-primary w-100 ">Back</button>
                 </Link>
                 

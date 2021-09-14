@@ -1,15 +1,43 @@
 import React from 'react'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import { DataContext } from '../store/GlobalState';
+import {useState, useContext, useEffect} from 'react'
+import Cookies from 'js-cookie';
 
 function NavBar() {
     const router = useRouter()
+    const {state,dispatch} = useContext(DataContext)
+    const {auth} = state
+
     const isActive =(r) =>{
         if(r===router.pathname){
             return " active"
         }else{
             return ""
         }
+    }
+
+    const loggedRouter = () =>{
+      return(
+         <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i className="fas fa-user"></i> User
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a className="dropdown-item" href="#"> <i className="fas fa-user-circle"></i> Profile</a>
+                <button className="dropdown-item" onClick={handleLogout} > <i className="fas fa-sign-out-alt"></i> Logout</button>
+              
+              </div>
+            </li> 
+      )
+    }
+
+    const handleLogout = ()=>{
+      Cookies.remove('refreshtoken', {path:'api/auth/accessToken'})
+      localStorage.removeItem('firstLogin')
+      dispatch({type:'AUTH', payload: {} })
+      dispatch({type:'NOTIFY', payload: {success :'Logged out'} })
     }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,24 +55,21 @@ function NavBar() {
                         <i className="fas fa-cart-arrow-down" aria-hidden="true"></i> Cart</a>
               </Link>
             </li>
-
-            <li className="nav-item ">
-                <Link href="/login">
-                <a className={"nav-link" + isActive('/login')}>
-                        <i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</a>
-              </Link>
+            {
+              Object.keys(auth).length === 0 
+              ?
+              <li className="nav-item ">
+              <Link href="/login">
+              <a className={"nav-link" + isActive('/login')}>
+                      <i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</a>
+            </Link>
             </li>
+            :loggedRouter()
+          
+            }
+
+           
             
-            {/* <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i className="fas fa-user"></i> User
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="#"> <i className="fas fa-user-circle"></i> Profile</a>
-                <a className="dropdown-item" href="#"> <i className="fas fa-sign-out-alt"></i> Logout</a>
-              
-              </div>
-            </li> */}
           </ul>
         </div>
       </nav>
