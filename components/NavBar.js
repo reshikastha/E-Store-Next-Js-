@@ -22,10 +22,12 @@ function NavBar() {
       return(
          <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i className="fas fa-user"></i> User
+              <i className="fas fa-user"></i> Welcome {auth.user.name}
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <Link href="/profile">
                 <a className="dropdown-item" href="#"> <i className="fas fa-user-circle"></i> Profile</a>
+                </Link>
                 <button className="dropdown-item" onClick={handleLogout} > <i className="fas fa-sign-out-alt"></i> Logout</button>
               
               </div>
