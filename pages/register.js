@@ -60,7 +60,7 @@ const Register =()=>{
                 
                 <button type="submit" className="btn btn-dark w-100" style={{marginTop:"10px", marginBottom:"20px"}}>Submit</button>
 
-                <Link href="signin">
+                <Link href="login">
                 <button type="submit" className="btn btn-primary w-100 ">Back</button>
                 </Link>
                 
