@@ -6,6 +6,8 @@ import { getData } from '../utils/fetchData'
 import ProductItem from '../components/product/ProductItem'
 
 import {useRouter} from 'next/router'
+import { MongoClient } from 'mongodb';
+import MeetupList from '../components/meetups/MeetupList'
 
 
 const Home = (props) => {
@@ -59,7 +61,23 @@ const Home = (props) => {
   //   setPage(page + 1)
   //   filterSearch({router, page: page + 1})
   // }
-
+  const DUMMY_MEETUPS = [
+    {
+      id:'m1',
+      title:'A First Meeting',
+      image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
+      address: 'Some address 5, 12345 Some City',
+      description:'This is a first meeting!'
+    },
+    {
+      id:'m2',
+      title:'A Second Meeting',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDfjM-pNLe7wU-1Rv5OvyoHxKfo2XA9gt8Lw&usqp=CAU',
+      address: 'Some address 10, 12345 Some City',
+      description:'This is a Second meeting!'
+    }
+  ]
+  
   return(
     <div className="home_page">
       <Head>
@@ -82,7 +100,7 @@ const Home = (props) => {
         </div>
       }
 
-      <div className="products" style={{display:'flex',flexDirection:"row",  margin:"10px 0"}}>
+      {/* <div className="products" style={{display:'flex',flexDirection:"row",  margin:"10px 0"}}>
         {
           products.length === 0 
           ? <h2>No Products</h2>
@@ -91,37 +109,58 @@ const Home = (props) => {
             <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
           ))
         }
-      </div>
-      
-      {
+      </div> */}
+       <MeetupList meetups={props.meetups}/> 
+      {/* {
         props.result < page * 6 ? ""
         : <button className="btn btn-outline-info d-block mx-auto mb-4"
         onClick={handleLoadmore}>
           Load more
         </button>
-      }
+      } */}
     
     </div>
   )
 }
 
+export async function getStaticProps(){
+  //fetch data from an API
 
-export async function getServerSideProps({query}) {
-  const page = query.page || 1
-  const category = query.category || 'all'
-  const sort = query.sort || ''
-  const search = query.search || 'all'
+  const client =await MongoClient.connect('mongodb+srv://e-Store:shrestha1@cluster0.0aafw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+  const db =client.db();
 
-  const res = await getData(
-    `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
-  )
-  // server side rendering
-  return {
-    props: {
-      products: res.products,
-      result: res.result
-    }, // will be passed to the page component as props
+  const meetupCollection = db.collection('meetups');
+  const meetups =await meetupCollection.find().toArray();
+
+  client.close();
+  return{
+    props:{
+      meetups: meetups.map(meetup => ({
+        title: meetup.title,
+        address:meetup.address,
+        image:meetup.image,
+        id:meetup._id.toString()
+      }))
+    },
+    revalidate:1
   }
 }
+// export async function getServerSideProps({query}) {
+//   const page = query.page || 1
+//   const category = query.category || 'all'
+//   const sort = query.sort || ''
+//   const search = query.search || 'all'
+
+//   const res = await getData(
+//     `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+//   )
+//   // server side rendering
+//   return {
+//     props: {
+//       products: res.products,
+//       result: res.result
+//     }, // will be passed to the page component as props
+//   }
+// }
 
 export default Home

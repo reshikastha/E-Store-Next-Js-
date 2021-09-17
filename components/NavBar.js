@@ -23,7 +23,7 @@ function NavBar() {
           <Link href="/users">
               <a className="dropdown-item"> <i class="fas fa-users"></i> Users</a>
           </Link>
-          <Link href="/create">
+          <Link href="/new-meetup">
               <a className="dropdown-item"><i class="fab fa-product-hunt"></i> Products</a>
           </Link>
           <Link href="/categories">
@@ -72,9 +72,9 @@ function NavBar() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-                <Link href="/cart">
-                    <a className={"nav-link" + isActive('/cart')}>
-                        <i className="fas fa-cart-arrow-down" aria-hidden="true"></i> Cart</a>
+                <Link href="/about">
+                    <a className="nav-link" >
+                        <i className="fas fa-cart-arrow-down" aria-hidden="true"></i> About</a>
               </Link>
             </li>
             {
