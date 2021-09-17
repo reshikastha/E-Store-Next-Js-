@@ -66,14 +66,14 @@ const Home = (props) => {
       id:'m1',
       title:'A First Meeting',
       image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
-      address: 'Some address 5, 12345 Some City',
+      price: '12163576',
       description:'This is a first meeting!'
     },
     {
       id:'m2',
       title:'A Second Meeting',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDfjM-pNLe7wU-1Rv5OvyoHxKfo2XA9gt8Lw&usqp=CAU',
-      address: 'Some address 10, 12345 Some City',
+      price: '234567',
       description:'This is a Second meeting!'
     }
   ]
@@ -137,7 +137,7 @@ export async function getStaticProps(){
     props:{
       meetups: meetups.map(meetup => ({
         title: meetup.title,
-        address:meetup.address,
+        price:meetup.price,
         image:meetup.image,
         id:meetup._id.toString()
       }))

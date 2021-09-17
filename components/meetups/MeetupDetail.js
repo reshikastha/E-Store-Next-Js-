@@ -6,7 +6,7 @@ function MeetupDetail(props){
              alt={props.title}/>
 
              <h1>{props.title}</h1>
-             <address>{props.address}</address>
+             <address>{props.price}</address>
              <p>{props.description}</p>
         </section>
     )
