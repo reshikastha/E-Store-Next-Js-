@@ -49,13 +49,13 @@ const ProductItem = ({product, handleCheck}) => {
     return(
         
         <div className="card" style={{ width: '18rem', margin:"10px auto" }}>
-            {/* {
+            {
                 auth.user && auth.user.role === 'admin' &&
                 <input type="checkbox" checked={product.checked}
                 className="position-absolute"
                 style={{height: '20px', width: '20px'}}
                 onChange={() => handleCheck(product._id)} />
-            } */}
+            }
             <img className="card-img-top"style={{height:"250px",width:"100%"}} src={product.images[0].url} alt={product.images[0].url} />
             <div className="card-body">
                 <h5 className="card-title text-capitalize" style={{overflow:"hidden", textOverflow:"ellipsis"}} title={product.title}>

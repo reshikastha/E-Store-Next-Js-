@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const Users = () => {
     const {state, dispatch} = useContext(DataContext)
-    const {users, auth} = state
+    const {users, auth, modal} = state
 
     if(!auth.user) return null;
     return(
@@ -25,6 +25,7 @@ const Users = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Admin</th>
+                        <th>Action</th>
                       
                     </tr>
                 </thead>
@@ -46,6 +47,21 @@ const Users = () => {
 
                                         :<i className="fas fa-times text-danger"></i>
                                     }
+                                </th>
+                                <th>
+                                    
+                                    {
+                                        auth.user.root && auth.user.email !== user.email
+                                        ? <i className="fas fa-trash-alt text-danger ml-2" title="Remove"
+                                        data-toggle="modal" data-target="#exampleModal"
+                                        onClick={() => dispatch({
+                                            type: 'ADD_MODAL',
+                                            payload: [{ data: users, id: user._id, title: user.name, type: 'ADD_USERS' }]
+                                        })}></i>
+                                        
+                                        : <i className="fas fa-trash-alt text-danger ml-2" title="Remove"></i>
+                                    }
+
                                 </th>
                                
                             </tr>

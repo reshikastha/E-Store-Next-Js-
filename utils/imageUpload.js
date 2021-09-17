@@ -5,7 +5,7 @@ export const imageUpload = async (images) => {
         formData.append("file", item)
        
 
-        const res = await fetch(process.env.CLOUD_API, {
+        const res = await fetch(process.env.item, {
             method: "POST",
             body: formData
         })

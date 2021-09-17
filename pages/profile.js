@@ -50,7 +50,7 @@ const Profile = () => {
         })
     }
    
-    const changeImage = (e) => {
+    const changeAvatar = (e) => {
         console.log(e.target.files[0])
         const file = e.target.files[0]
         if(!file)
@@ -105,7 +105,7 @@ const Profile = () => {
                             <i className="fas fa-camera"></i>
                             <p>Change</p>
                             <input type="file" name="file" id="file_up"
-                            accept="image/*" onChange={changeImage} />
+                            accept="image/*" onChange={changeAvatar} />
                         </span>
                     </div>
 

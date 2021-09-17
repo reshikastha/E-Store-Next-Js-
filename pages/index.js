@@ -66,7 +66,7 @@ const Home = (props) => {
         <title>Home Page</title>
       </Head>
 
-      {/* <Filter state={state} />
+       {/* <Filter state={state} /> */}
 
       {
         auth.user && auth.user.role === 'admin' &&
@@ -80,7 +80,7 @@ const Home = (props) => {
             DELETE ALL
           </button>
         </div>
-      } */}
+      }
 
       <div className="products" style={{display:'flex',flexDirection:"row",  margin:"10px 0"}}>
         {
