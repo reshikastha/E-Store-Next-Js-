@@ -7,7 +7,7 @@ const About =()=>{
                             {/* <img src='./hire.jpg' alt='car' className='img-fluid' style={{width:"100%"}}/>  */}
                                     <div className="about">
                                         <h1>About Us</h1>
-                                        <h2> Car Rent is a transportation technology providing a full range of app-based services including ride-sharing.
+                                        <h2> E-Store is a transportation technology providing a full range of app-based services including ride-sharing.
                                             We want a better way to plan and manage our own travel. </h2>
                                     </div>
                             </div>
@@ -19,7 +19,7 @@ const About =()=>{
                             <div className="slide col-sm-6">
                                 <h3>E-STORE</h3>
                               
-                                <p> Car Sharing is  a company that is located in 
+                                <p> E-Store is  a company that is located in 
                                     Kathmandu, Nepal. It provide serviice like
                                     pick up and drop service for people in 
                                     kathmandu, bhaktapur and lalitapur. It was 
@@ -38,9 +38,7 @@ const About =()=>{
                             <div className=" slide col-sm-6">
 
                                 <h4>Save Money </h4>
-                                <p> Get the car rent on best price. You can also share your ride with you friends or with
-                                    other user who is going on the same direction and you can share your payment with the 
-                                    other passenger this can reduce the cost.   
+                                <p> Get electronic product on best price.   
                                 </p>
                                 
                             </div>

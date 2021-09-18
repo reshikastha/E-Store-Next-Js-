@@ -9,43 +9,23 @@ import Card from '../../components/ui/Card'
 
 
 const ProductsManager = (props) => {
-    const titleInputRef = useRef();
-  const imageInputRef = useRef();
-  const priceInputRef = useRef();
-  const descriptionInputRef = useRef();
 
-  function submitHandler(event) {
-    event.preventDefault();
-
-    const enteredTitle = titleInputRef.current.value;
-    const enteredImage = imageInputRef.current.value;
-    const enteredprice = priceInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
-
-    const meetupData = {
-      title: enteredTitle,
-      image: enteredImage,
-      price: enteredprice,
-      description: enteredDescription,
-    };
-
-    // props.onAddMeetup(meetupData);
-  }
 
   return (
     <Card>
-      <form className="form"  style={{padding:"1rem"}} onSubmit={submitHandler}>
+      <h3 style={{textAlign:"center",fontStyle:"bold", marginTop:"10px"}}>Update the product</h3>
+      <form className="form"  style={{padding:"1rem"}}>
         <div className="control" style={{marginBottom:"0.5rem"}}>
           <label htmlFor='title' style={{display:"block",marginBottom:"0.5rem"}}>Product Title</label>
-          <input type='text' required id='title' ref={titleInputRef} style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}/>
+          <input type='text' required id='title' style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}>{props.title}</input>
         </div>
         <div className="control" style={{marginBottom:"0.5rem"}}>
           <label htmlFor='image' style={{display:"block",marginBottom:"0.5rem"}}>Product Image</label>
-          <input type='url' required id='image' ref={imageInputRef} style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}/>
+          <input type='url' required id='image'  style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}>{props.image}</input>
         </div>
         <div className="control" style={{marginBottom:"0.5rem"}}>
           <label htmlFor='price' style={{display:"block",marginBottom:"0.5rem"}}>Price</label>
-          <input type='text' required id='address' ref={priceInputRef} style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}/>
+          <input type='text' required id='address' style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}>{props.price}</input>
         </div>
         <div className="control" style={{marginBottom:"0.5rem"}}>
           <label htmlFor='description' style={{display:"block",marginBottom:"0.5rem"}}>Description</label>
@@ -53,11 +33,11 @@ const ProductsManager = (props) => {
             id='description'
             required
             rows='5'
-            ref={descriptionInputRef}
-            style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}></textarea>
+           
+            style={{display:"block",font:"inherit",borderRadius:"4px",border:"1px solid #ccc", padding:"0.25rem",width:"100%"}}>{props.description}</textarea>
         </div>
         <div className="actions" style={{marginTop:"1rem", textAlign:"right"}}>
-          <button style={{cursor:"pointer",backgroundColor:"#77002e",color:"white",padding:"0.5rem 1.5 rem", border:"1px solid #77002e", borderRadius:"4px", fontWeight:"bold"}}>Add Product</button>
+          <button style={{cursor:"pointer",backgroundColor:"#77002e",color:"white",padding:"0.5rem 1.5 rem", border:"1px solid #77002e", borderRadius:"4px", fontWeight:"bold"}}>Update Product</button>
         </div>
       </form>
     </Card>
