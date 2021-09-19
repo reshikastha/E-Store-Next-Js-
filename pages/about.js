@@ -3,14 +3,10 @@ const About =()=>{
         <div className="container-fluid">
         <div className="Aboutus">
                 <div className="img">
-                            <div className="col-sm-12">
-                            {/* <img src='./hire.jpg' alt='car' className='img-fluid' style={{width:"100%"}}/>  */}
-                                    <div className="about">
-                                        <h1>About Us</h1>
-                                        <h2> E-Store is a transportation technology providing a full range of app-based services including ride-sharing.
-                                            We want a better way to plan and manage our own travel. </h2>
-                                    </div>
-                            </div>
+                            {/* <div className="col-sm-12"> */}
+                            <img src='./images/about.png' alt='car' className='img-fluid' style={{width:"100%", margin:"10px"}}/> 
+                                   
+                            {/* </div> */}
                 </div>
               
                     <div className=" jumbotron car">
@@ -19,20 +15,12 @@ const About =()=>{
                             <div className="slide col-sm-6">
                                 <h3>E-STORE</h3>
                               
-                                <p> E-Store is  a company that is located in 
-                                    Kathmandu, Nepal. It provide serviice like
-                                    pick up and drop service for people in 
-                                    kathmandu, bhaktapur and lalitapur. It was 
-                                    started by 7 student of Softwarica Collage as 
-                                    their final year project. Car Sharing determines
-                                    the fees and terms on which drivers transport
-                                    riders. The company takes a 25% share of 
-                                    each fare provided by their  “partners”. 
-
-                                    Car Sharing provide safe and secure travel
-                                    when it come to girls and women who have to 
-                                    work till midnight. It is one of the save, cheap 
-                                    car sharing company in Kathmandu.
+                                <p> E-Store Online shopping is a form of electronic commerce which allows 
+                                    consumers to directly buy goods or services from a seller over the Internet
+                                     using a web browser or a mobile app. Consumers find a product of interest
+                                      by visiting the website of the retailer directly or by searching among 
+                                      alternative vendors using a shopping search engine, which displays the 
+                                      same product's availability and pricing at different e-retailers.
                                     </p>
                                     </div>
                             <div className=" slide col-sm-6">

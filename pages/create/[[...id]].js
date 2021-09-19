@@ -1,10 +1,4 @@
-import Head from 'next/head'
-import {useState, useContext, useEffect} from 'react'
-import {DataContext} from '../../store/GlobalState'
-import {imageUpload} from '../../utils/imageUpload'
-import {postData, getData, putData} from '../../utils/fetchData'
-import {useRouter} from 'next/router';
-import { useRef } from 'react';
+
 import Card from '../../components/ui/Card'
 
 

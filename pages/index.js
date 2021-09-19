@@ -28,34 +28,34 @@ const Home = (props) => {
     if(Object.keys(router.query).length === 0) setPage(1)
   },[router.query])
 
-  const handleCheck = (id) => {
-    products.forEach(product => {
-      if(product._id === id) product.checked = !product.checked
-    })
-    setProducts([...products])
-  }
+  // const handleCheck = (id) => {
+  //   products.forEach(product => {
+  //     if(product._id === id) product.checked = !product.checked
+  //   })
+  //   setProducts([...products])
+  // }
 
-  const handleCheckALL = () => {
-    products.forEach(product => product.checked = !isCheck)
-    setProducts([...products])
-    setIsCheck(!isCheck)
-  }
+  // const handleCheckALL = () => {
+  //   products.forEach(product => product.checked = !isCheck)
+  //   setProducts([...products])
+  //   setIsCheck(!isCheck)
+  // }
 
-  const handleDeleteAll = () => {
-    let deleteArr = [];
-    products.forEach(product => {
-      if(product.checked){
-          deleteArr.push({
-            data: '', 
-            id: product._id, 
-            title: 'Delete all selected products?', 
-            type: 'DELETE_PRODUCT'
-          })
-      }
-    })
+  // const handleDeleteAll = () => {
+  //   let deleteArr = [];
+  //   products.forEach(product => {
+  //     if(product.checked){
+  //         deleteArr.push({
+  //           data: '', 
+  //           id: product._id, 
+  //           title: 'Delete all selected products?', 
+  //           type: 'DELETE_PRODUCT'
+  //         })
+  //     }
+  //   })
 
-    dispatch({type: 'ADD_MODAL', payload: deleteArr})
-  }
+  //   dispatch({type: 'ADD_MODAL', payload: deleteArr})
+  // }
 
   // const handleLoadmore = () => {
   //   setPage(page + 1)
@@ -85,20 +85,6 @@ const Home = (props) => {
       </Head>
 
        {/* <Filter state={state} /> */}
-
-      {
-        auth.user && auth.user.role === 'admin' &&
-        <div className="delete_all btn btn-danger mt-2" style={{marginBottom: '-10px'}}>
-          <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
-          style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
-
-          <button className="btn btn-danger ml-2"
-          data-toggle="modal" data-target="#exampleModal"
-          onClick={handleDeleteAll}>
-            DELETE ALL
-          </button>
-        </div>
-      }
 
       {/* <div className="products" style={{display:'flex',flexDirection:"row",  margin:"10px 0"}}>
         {
